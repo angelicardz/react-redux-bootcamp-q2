@@ -8,11 +8,17 @@ import {
   Button,
 } from "../styles/pages/Cart.styles";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export const Cart = () => {
   const [products, setProducts] = useState([]);
   const [totalItems, setTotalItems] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
+  const history = useHistory();
+
+  if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
+    history.push("/login");
+  }
 
   useEffect(() => {
     getProducts();
