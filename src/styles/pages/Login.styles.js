@@ -4,14 +4,17 @@ export const Header = styled.h1`
   text-align: center;
 `;
 
-export const Container = styled.div`
+export const ContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center
+`;
+
+export const Container = styled.div`
   width: 450px;
-  height: 240px;
+  height: 300px;
   margin-top: 128px;
-  margin-left: 480px;
   background-color: rgb(245, 245, 245);
   padding: 70px 60px;
 `;
