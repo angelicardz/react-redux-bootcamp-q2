@@ -59,3 +59,5 @@ export const Login = () => {
         </div>
       </Container>
     </ContainerWrapper>
+  );
+};
