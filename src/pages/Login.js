@@ -27,35 +27,35 @@ export const Login = () => {
   };
 
   return (
-    <Container>
-      <Header>Welcome to the WizeStore!</Header>
-      <div>
-        <Label htmlFor="username">
-          <b>Username</b>
-        </Label>
-        <br />
-        <Input
-          type="text"
-          placeholder="Enter Username"
-          name="username"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        <br />
-        <Label htmlFor="password">
-          <b>Password</b>
-        </Label>
-        <br />
-        <Input
-          type="password"
-          placeholder="Enter Password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button onClick={() => login()}>Login</Button>
-        {loginError && loginError}
-      </div>
-    </Container>
-  );
-};
+    <ContainerWrapper>
+      <Container>
+        <Header>Welcome to the WizeStore!</Header>
+        <div>
+          <Label htmlFor="username">
+            <b>Username</b>
+          </Label>
+          <br />
+          <Input
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <br />
+          <Label htmlFor="password">
+            <b>Password</b>
+          </Label>
+          <br />
+          <Input
+            type="password"
+            placeholder="Enter Password"
+            name="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button onClick={() => login()}>Login</Button>
+          {loginError && loginError}
+        </div>
+      </Container>
+    </ContainerWrapper>
