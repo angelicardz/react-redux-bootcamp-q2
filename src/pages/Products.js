@@ -7,16 +7,13 @@ import {
   Price,
   Button,
 } from "../styles/pages/Products.styles";
+import { useDispatch } from "react-redux";
+import { add } from "../redux/slices/myCartSlice";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 export const Products = () => {
+  const dispatch = useDispatch();
   const [products, setProducts] = useState([]);
-  const history = useHistory();
-
-  if (!localStorage.getItem("username") && !localStorage.getItem("password")) {
-    history.push("/login");
-  }
 
   useEffect(() => {
     getProducts();
@@ -28,18 +25,24 @@ export const Products = () => {
       .then((res) => setProducts(res.data.data.products.items));
   };
 
+  const addToCart = ({ product }) => {
+    dispatch(add({ product }));
+  };
+
   return (
     <Container>
-      {products.map(({ id, images, name, categories, price }) => {
+      {products.map((product) => {
         const productName =
-          name.length > 40 ? `${name.substring(0, 40)}...` : name;
+          product.name.length > 40
+            ? `${product.name.substring(0, 40)}...`
+            : product.name;
         return (
-          <Product key={id}>
-            <img src={images[0]} alt={name} />
+          <Product key={product.id}>
+            <img src={product.images[0]} alt={product.name} />
             <Title>{productName}</Title>
-            <Category>{categories[0]}</Category>
-            <Price>$ {price}</Price>
-            <Button>Add to cart</Button>
+            <Category>{product.categories[0]}</Category>
+            <Price>$ {product.price}</Price>
+            <Button onClick={() => addToCart({ product })}>Add to cart</Button>
           </Product>
         );
       })}
